@@ -55,6 +55,36 @@ public class QuantilatorTest {
 		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
 	}
 	
+	@Test
+	public void shouldCalculatePercentilesForType5Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 82.0;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 5);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+	
+	@Test
+	public void shouldCalculatePercentilesForType4Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 77.0;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 4);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+	
+	@Test
+	public void shouldCalculatePercentilesForType9Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 82.675;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 9);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+	
 	private ArrayList<Double> createNewList(Double ... values){
 		ArrayList<Double> list = new ArrayList<Double>();
 		for (Double value : values) {

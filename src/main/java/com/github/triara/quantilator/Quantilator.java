@@ -18,12 +18,18 @@ private static double gamma;
 		Collections.sort(list);
 		n = list.size();
 		
-		if (type == 6) {
+		if (type == 4) {
+			m = 0.0;
+		}else if (type == 5) {
+			m = 0.5;
+		}else if (type == 6) {
 			m = quantile;
 		}else if (type == 7) {
 			m = 1.0 - quantile;
 		}else if (type == 8) {
 			m = (quantile + 1)/3;
+		}else if (type == 9) {
+			m = 0.25*quantile + 0.375;
 		}
 		
 		
