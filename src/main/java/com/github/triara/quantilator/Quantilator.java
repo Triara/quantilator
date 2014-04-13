@@ -18,7 +18,13 @@ private static double gamma;
 		Collections.sort(list);
 		n = list.size();
 		
-		if (type == 4) {
+		if (type == 1) {
+			m = 0.0;
+		}else if (type == 2){
+			m = 0.0;
+		}else if (type == 3) {
+			m = -0.5;
+		}else if (type == 4) {
 			m = 0.0;
 		}else if (type == 5) {
 			m = 0.5;
@@ -34,11 +40,28 @@ private static double gamma;
 		
 		
 		j = (int) (quantile*n + m);
-		gamma = quantile*n + m - j;
+		
+		if (type == 1) {
+			gamma = ((quantile*n + m - j) > 0)? 1.0 : 0.0;
+		}else if (type == 2) {
+			gamma = ((quantile*n + m - j) > 0)? 1.0 : 0.5;
+		}else if(type == 3) {
+			gamma = ((quantile*n + m - j) == 0 && isEven(j))? 0.0 : 1.0;
+		}else {
+			gamma = quantile*n + m - j;			
+		}
 		
 		int lowerElement = (j - 1 < 0) ? 0 : j - 1;
 		int upperElement = (j == n) ? j - 1 : j;
 		
 		return (((1.0 - gamma)*list.get(lowerElement)) + gamma*list.get(upperElement));
 	}
+	
+	public static boolean isEven(int number){
+		if ((number/2.0) == (int)Math.ceil(number/2.0)) {
+			return true;
+		}
+		return false;
+	}
+	
 }

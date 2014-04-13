@@ -85,6 +85,42 @@ public class QuantilatorTest {
 		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
 	}
 	
+	@Test
+	public void shouldCalculatePercentilesForType1Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 80.0;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 1);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+
+	@Test
+	public void shouldCalculatePercentilesForType2Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 80.0;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 2);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+	
+	@Test
+	public void shouldCalculatePercentilesForType3Definition() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0);
+		
+		Double expectedResult = 80.0;
+		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 3);
+		
+		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+	}
+	
+	@Test
+	public void shouldTellIfGivenNumberIsEvenOrOdd() {
+		assertFalse("7 is odd", Quantilator.isEven(7));
+		assertTrue("6 is even", Quantilator.isEven(6));
+	}
+	
 	private ArrayList<Double> createNewList(Double ... values){
 		ArrayList<Double> list = new ArrayList<Double>();
 		for (Double value : values) {
