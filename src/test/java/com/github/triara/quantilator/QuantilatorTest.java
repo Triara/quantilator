@@ -62,7 +62,7 @@ public class QuantilatorTest {
 		Double expectedResult = 82.0;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 5);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 5 definition", expectedResult, actualResult);
 	}
 	
 	@Test
@@ -72,7 +72,7 @@ public class QuantilatorTest {
 		Double expectedResult = 77.0;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 4);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 4 definition", expectedResult, actualResult);
 	}
 	
 	@Test
@@ -82,7 +82,7 @@ public class QuantilatorTest {
 		Double expectedResult = 82.675;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 9);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 9 definition", expectedResult, actualResult);
 	}
 	
 	@Test
@@ -92,7 +92,7 @@ public class QuantilatorTest {
 		Double expectedResult = 80.0;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 1);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 1 definition", expectedResult, actualResult);
 	}
 
 	@Test
@@ -102,7 +102,7 @@ public class QuantilatorTest {
 		Double expectedResult = 80.0;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 2);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 2 definition", expectedResult, actualResult);
 	}
 	
 	@Test
@@ -112,13 +112,26 @@ public class QuantilatorTest {
 		Double expectedResult = 80.0;
 		Double actualResult = Quantilator.calculateQuantile(receivedList, 0.77, 3);
 		
-		assertEquals("Should calculate quantile for type 6 definition", expectedResult, actualResult);
+		assertEquals("Should calculate quantile for type 3 definition", expectedResult, actualResult);
 	}
 	
+	/*
 	@Test
 	public void shouldTellIfGivenNumberIsEvenOrOdd() {
 		assertFalse("7 is odd", Quantilator.isEven(7));
 		assertTrue("6 is even", Quantilator.isEven(6));
+	}
+	*/
+	
+	@Test
+	public void shouldReceiveAnArrayOfQuantilesAndReturnAnArrayOfCorrespondingCalculatedValues() {
+		ArrayList<Double> receivedList = createNewList(10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,100.0, 18.0, 24.0, 38.0, 46.0, 51.0, 68.0, 74.0, 87.0, 93.0);
+		
+		ArrayList<Double> expectedResults = createNewList(49.36, 68.64, 87.56 );
+		ArrayList<Double> quantilesValues = createNewList(0.44, 0.62, 0.82);
+		ArrayList<Double> actualResults = Quantilator.calculateQuantile(receivedList, quantilesValues, 8);
+		
+		assertEquals("Should calculate several quantiles per call", expectedResults, actualResults);
 	}
 	
 	private ArrayList<Double> createNewList(Double ... values){
